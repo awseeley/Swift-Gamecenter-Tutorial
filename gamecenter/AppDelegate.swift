@@ -1,10 +1,7 @@
 //
 //  AppDelegate.swift
 //  gamecenter
-//
-//  Created by Andrew Seeley on 2/01/2015.
-//  Copyright (c) 2015 Seemu. All rights reserved.
-//
+
 
 import UIKit
 

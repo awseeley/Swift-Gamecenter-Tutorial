@@ -339,6 +339,7 @@
 				INFOPLIST_FILE = gamecenter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "362e6ca1-a009-4783-ace5-e1e46216b274";
 			};
 			name = Debug;
 		};
@@ -349,6 +350,7 @@
 				INFOPLIST_FILE = gamecenter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "362e6ca1-a009-4783-ace5-e1e46216b274";
 			};
 			name = Release;
 		};
