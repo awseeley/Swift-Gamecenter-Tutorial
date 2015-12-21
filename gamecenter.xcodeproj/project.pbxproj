@@ -156,6 +156,7 @@
 		94FAC3591A56800C00D33F76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Seemu;
 				TargetAttributes = {
@@ -407,6 +408,7 @@
 				94FAC3821A56800C00D33F76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94FAC3831A56800C00D33F76 /* Build configuration list for PBXNativeTarget "gamecenterTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +417,7 @@
 				94FAC3851A56800C00D33F76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

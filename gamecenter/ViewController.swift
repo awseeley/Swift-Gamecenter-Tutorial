@@ -23,66 +23,62 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
         
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
-                self.presentViewController(ViewController, animated: true, completion: nil)
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
             } else if (localPlayer.authenticated) {
-                println("Local player already authenticated")
+                // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
                 
                 // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String!, error: NSError!) -> Void in
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
                     if error != nil {
-                        println(error)
+                        print(error)
                     } else {
-                        self.gcDefaultLeaderBoard = leaderboardIdentifer
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
                     }
                 })
                 
                 
             } else {
+                // 3 Game center is not enabled on the users device
                 self.gcEnabled = false
-                println("Local player could not be authenticated, disabling game center")
-                println(error)
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
             }
             
         }
         
-        
     }
 
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
-        
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
             gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     @IBAction func showLeaderboard(sender: UIButton) {
-        var gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        let gcVC: GKGameCenterViewController = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
         gcVC.leaderboardIdentifier = "LeaderboardID"
         self.presentViewController(gcVC, animated: true, completion: nil)
-
     }
 
     @IBAction func submitScore(sender: UIButton) {
-        var leaderboardID = "LeaderboardID"
-        var sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        let leaderboardID = "LeaderboardID"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
         sScore.value = Int64(score)
         
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         
-        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError!) -> Void in
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
             if error != nil {
-               println(error.localizedDescription)
+                print(error!.localizedDescription)
             } else {
-                 println("Score submitted")
+                print("Score submitted")
                 
             }
         })
-        
-        
-        
     }
     
 
@@ -92,7 +88,6 @@ class ViewController: UIViewController, GKGameCenterControllerDelegate {
         lblScore.text = "\(score)"
         self.authenticateLocalPlayer()
 
-        
     }
 
     override func didReceiveMemoryWarning() {
